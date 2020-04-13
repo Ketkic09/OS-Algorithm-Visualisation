@@ -121,10 +121,132 @@ def vis1():
     bt1=Button(tk, text="START", width=10, command=ball)
     bt1.place(x=500,y=500)
     
+def vis2():
+    sj=[]
+    tk=Tk()
+    tk.title("Graphics")
 
-    
-def helloCallBack():
-    os.system('priority.py')
+    Height=1000
+    Width=1000
+    canvas=Canvas(tk,width=Width,height=Height)
+    canvas.pack()
+    v1=Label(master=tk,text="Values entered by the user",fg="green",font=("helvetica",15,"bold"))
+    v1.place(x=100,y=155)
+    ball1=canvas.create_oval(100,300,150,250,fil="red")
+    ball2=canvas.create_oval(200,300,250,250,fil="red")
+    ball3=canvas.create_oval(300,300,350,250,fil="red")
+    ball4=canvas.create_oval(400,300,450,250,fill="red")
+    ball5=canvas.create_oval(500,300,550,250,fill="red")
+    text5=canvas.create_text(525,275,text=y1,font=18)
+    text4=canvas.create_text(425,275,text=y2,font=18)
+    text3=canvas.create_text(325,275,text=y3,font=18)
+    text2=canvas.create_text(225,275,text=y4,font=18)
+    text1=canvas.create_text(125,275,text=y5,font=18)
+    v2=Label(master=tk,text="In SJF the shortest job needs to be execute first Hence we will sort them in ascending order",fg="green",font=("helvetica",15,"bold"))
+    v2.place(x=100,y=350)
+    v3=Label(master=tk,text="Click the button to arrange them in ascending order and visualization:",fg="green",font=("helvetica",15,"bold"))
+    v3.place(x=100,y=400)
+    sj.append(y1)
+    sj.append(y2)
+    sj.append(y3)
+    sj.append(y4)
+    sj.append(y5)
+    sj.sort()
+    def ball1():
+        xspeed=9
+        yspeed=0
+        print(sj)
+        x1=9
+        y11=0
+        canvas.create_rectangle(700,500,900,650,outline="#fb0",fill="#fb0")
+        ball1=canvas.create_oval(100,550,150,600,fil="red")
+        ball2=canvas.create_oval(200,550,250,600,fil="red")
+        ball3=canvas.create_oval(300,550,350,600,fil="red")
+        ball4=canvas.create_oval(400,550,450,600,fill="red")
+        ball5=canvas.create_oval(500,550,550,600,fill="red")
+        text5=canvas.create_text(525,575,text=sj[0],font=18)
+        text4=canvas.create_text(425,575,text=sj[1],font=18)
+        text3=canvas.create_text(325,575,text=sj[2],font=18)
+        text2=canvas.create_text(225,575,text=sj[3],font=18)
+        text1=canvas.create_text(125,575,text=sj[4],font=18)
+        while True:
+            canvas.move(ball5,xspeed,yspeed)
+            canvas.move(text5,x1,y11)
+            pos1=canvas.coords(text5)
+            pos=canvas.coords(ball5)
+            if pos[3]>=1000 or pos[1]<=0:
+                yspeed=-yspeed
+                y1=-y1
+            if pos[2]>=800 or pos[0]<=0:
+                canvas.delete(ball5)
+                canvas.delete(text5)
+                break
+            tk.update()
+            time.sleep(0.1)
+        while True:
+            canvas.move(ball4,xspeed,yspeed)
+            pos=canvas.coords(ball4)
+            canvas.move(text4,x1,y11)
+            pos1=canvas.coords(text4)
+            if pos[3]>=1000 or pos[1]<=0:
+                yspeed=-yspeed
+                y1=-y1
+            if pos[2]>=800 or pos[0]<=0:
+                canvas.delete(ball4)
+                canvas.delete(text4)
+                break
+            tk.update()
+            time.sleep(0.1)
+            
+        while True:
+            canvas.move(ball3,xspeed,yspeed)
+            pos=canvas.coords(ball3)
+            canvas.move(text3,x1,y11)
+            pos1=canvas.coords(text3)
+            if pos[3]>=1000 or pos[1]<=0:
+                yspeed=-yspeed
+                y1=-y1
+            if pos[2]>=800 or pos[0]<=0:
+                canvas.delete(ball3)
+                canvas.delete(text3)
+                break
+            tk.update()
+            time.sleep(0.1)
+
+            
+        while True:
+            canvas.move(ball2,xspeed,yspeed)
+            pos=canvas.coords(ball2)
+            canvas.move(text2,x1,y11)
+            pos1=canvas.coords(text2)
+            if pos[3]>=1000 or pos[1]<=0:
+                yspeed=-yspeed
+                y1=-y1
+            if pos[2]>=800 or pos[0]<=0:
+                canvas.delete(ball2)
+                canvas.delete(text2)
+                break
+            tk.update()
+            time.sleep(0.1)
+
+        while True:
+            canvas.move(ball1,xspeed,yspeed)
+            pos=canvas.coords(ball1)
+            canvas.move(text1,x1,y11)
+            pos1=canvas.coords(text1)
+            if pos[3]>=1000 or pos[1]<=0:
+                yspeed=-yspeed
+                y1=-y1
+            if pos[2]>=800 or pos[0]<=0:
+                canvas.delete(ball1)
+                canvas.delete(text1)
+                break
+            tk.update()
+            time.sleep(0.1)
+
+
+    bt1=Button(tk, text="START", width=8, command=ball1)
+    bt1.place(x=800,y=400)
 def clear1():
     e1.delete(0,END)
     e2.delete(0,END)
@@ -297,6 +419,8 @@ def totale1():
     e5.insert(END,y5)
     clear=Button(master=window,text="CLEAR",bg="white",command=clear1,fg="red",font=("helvetica",15,"bold"))
     clear.place(x=800,y=650)
+    vis=Button(master=window,text="VISUALIZATION",bg="white",command=vis2,fg="red",font=("helvetica",15,"bold"))
+    vis.place(x=1075,y=650)
 def totale2():
     n=5
     wt=[]
