@@ -119,6 +119,10 @@ def ball():
     canvas.delete(t1)
     val = int(g) + val  
     t1=canvas.create_text(350,130,text=val,font=18)
+    val = val/5
+    t2=canvas.create_text(350,200,text='Average waiting time : '+str(val),font=18)
+
+
     
 tk=Tk()
 tk.title("Graphics")
@@ -135,4 +139,5 @@ val = 0
 
 bt1=Button(tk, text="START", width=8, command=ball)
 bt1.place(x=800,y=500)
+
 tk.mainloop()
