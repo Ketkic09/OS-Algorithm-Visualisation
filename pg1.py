@@ -10,7 +10,7 @@ root = Tk()
 root.title('OS algorithm visualisation ')
 root.geometry('1450x800')
 root.configure(bg="tomato")
-global e1,e2,e3,e4,e5,y1,y2,y3,y4,y5
+global e1,e2,e3,e4,e5,y1,y2,y3,y4,y5,avgwt,avgtat
 def ball():
     tk=Tk()
     tk.title("Graphics")
@@ -22,6 +22,7 @@ def ball():
     yspeed=0
     x1=9
     y11=0
+    canvas.create_rectangle(200,100,300,150,outline="#fb0",fill="#fb0")
     canvas.create_rectangle(700,100,900,400,outline="#fb0",fill="#fb0")
     ball1=canvas.create_oval(100,300,150,250,fil="red")
     ball2=canvas.create_oval(200,300,250,250,fil="red")
@@ -47,6 +48,10 @@ def ball():
             break
         tk.update()
         time.sleep(0.1)
+    global val
+    val=0
+    val = int(y1) + val 
+    t1=canvas.create_text(250,130,text=val,font=18) 
     while True:
         canvas.move(ball4,xspeed,yspeed)
         pos=canvas.coords(ball4)
@@ -61,6 +66,9 @@ def ball():
             break
         tk.update()
         time.sleep(0.1)
+    canvas.delete(t1)
+    val = int(y2) + val 
+    t1=canvas.create_text(250,130,text=val,font=18)
         
     while True:
         canvas.move(ball3,xspeed,yspeed)
@@ -76,6 +84,9 @@ def ball():
             break
         tk.update()
         time.sleep(0.1)
+    canvas.delete(t1)
+    val = int(y3) + val 
+    t1=canvas.create_text(250,130,text=val,font=18)
 
         
     while True:
@@ -92,6 +103,9 @@ def ball():
             break
         tk.update()
         time.sleep(0.1)
+    canvas.delete(t1)
+    val = int(y4) + val 
+    t1=canvas.create_text(250,130,text=val,font=18)
 
     while True:
         canvas.move(ball1,xspeed,yspeed)
@@ -107,6 +121,10 @@ def ball():
             break
         tk.update()
         time.sleep(0.1)
+    canvas.delete(t1)
+    val = int(y5) + val 
+    t1=canvas.create_text(250,130,text=val,font=18)
+    t2=canvas.create_text(300,200,text='Average waiting time :'+str(avgwt),font=18)
 def vis1():
     tk=Tk()
     tk.title("Graphics")
@@ -122,6 +140,7 @@ def vis1():
     bt1.place(x=500,y=500)
     
 def vis2():
+    global avgwt
     sj=[]
     tk=Tk()
     tk.title("Graphics")
@@ -153,12 +172,14 @@ def vis2():
     sj.append(y5)
     sj.sort()
     def ball1():
+        global avgwt
         xspeed=9
         yspeed=0
         print(sj)
         x1=9
         y11=0
         canvas.create_rectangle(700,500,900,650,outline="#fb0",fill="#fb0")
+        canvas.create_rectangle(200,100,300,150,outline="#fb0",fill="#fb0")
         ball1=canvas.create_oval(100,550,150,600,fil="red")
         ball2=canvas.create_oval(200,550,250,600,fil="red")
         ball3=canvas.create_oval(300,550,350,600,fil="red")
@@ -183,6 +204,11 @@ def vis2():
                 break
             tk.update()
             time.sleep(0.1)
+        global val
+        val=0
+        val = int(sj[0])+val
+        t1=canvas.create_text(250,130,text=val,font=18)
+
         while True:
             canvas.move(ball4,xspeed,yspeed)
             pos=canvas.coords(ball4)
@@ -197,6 +223,9 @@ def vis2():
                 break
             tk.update()
             time.sleep(0.1)
+        canvas.delete(t1)
+        val = int(sj[1])+val
+        t1=canvas.create_text(250,130,text=val,font=18)
             
         while True:
             canvas.move(ball3,xspeed,yspeed)
@@ -212,6 +241,9 @@ def vis2():
                 break
             tk.update()
             time.sleep(0.1)
+        canvas.delete(t1)
+        val = int(sj[2])+val
+        t1=canvas.create_text(250,130,text=val,font=18)
 
             
         while True:
@@ -228,6 +260,9 @@ def vis2():
                 break
             tk.update()
             time.sleep(0.1)
+        canvas.delete(t1)
+        val = int(sj[3])+val
+        t1=canvas.create_text(250,130,text=val,font=18)
 
         while True:
             canvas.move(ball1,xspeed,yspeed)
@@ -243,6 +278,10 @@ def vis2():
                 break
             tk.update()
             time.sleep(0.1)
+        canvas.delete(t1)
+        val = int(sj[4])+val
+        t1=canvas.create_text(250,130,text=val,font=18)
+        t2=canvas.create_text(500,130,text='Average waiting time : '+str(avgwt),font=18)
 
 
     bt1=Button(tk, text="START", width=8, command=ball1)
@@ -466,7 +505,7 @@ def totale1():
     window.configure(bg="tomato")
     title=Label(master=window,text="SJF",bg="YELLOW",fg="green",font=("helvetica",70,"bold"))
     title.place(x=1000,y=90)
-    global e1,e2,e3,e4,e5,y1,y2,y3,y4,y5
+    global e1,e2,e3,e4,e5,y1,y2,y3,y4,y5,avgwt
     n=5
     if(e1.get()==""):
         y1=0
@@ -945,6 +984,7 @@ def totale2():
     total.place(x=525,y=650)
 
 def totale():
+    global avgwt
     window=Tk()
     window.geometry("1450x800")
     window.title("FCFS")
