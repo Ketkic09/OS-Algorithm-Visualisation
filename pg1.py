@@ -287,7 +287,7 @@ def vis2():
     bt1=Button(tk, text="START", width=8, command=ball1)
     bt1.place(x=800,y=400)
 def ball3():
-    global e1,e2,e3,e4,e5,y1,y2,y3,y4,y5
+    global e1,e2,e3,e4,e5,y1,y2,y3,y4,y5,avgwt
     tk=Tk()
     tk.title("Graphics")
     tk.configure(bg="blue")
@@ -348,10 +348,6 @@ def ball3():
     text7=canvas.create_text(225,375,text=pri[3],font=18)
     text6=canvas.create_text(125,375,text=pri[4],font=18)
     
-    q1=Label(master=tk,text="AVERAGE WAITING TIME = ",bg="tomato",fg="green",font=("helvetica",15,"bold"))
-    q1.place(x=600,y=540)
-    q2=Label(master=tk,text=avgwt,bg="tomato",fg="green",font=("helvetica",15,"bold"))
-    q2.place(x=850,y=540)
     q3=Label(master=tk,text="IN THIS ALGORITHM THE PROCESS DISPATCHED WILL BE THE ONE" '\n' "THAT HAS HIGGEST PRIORITY AMONGST THE PROCESS WAITING IN THE QUEUE",bg="tomato",fg="green",font=("helvetica",15,"bold"))
     q3.place(x=100,y=600)
     
@@ -456,14 +452,15 @@ def ball3():
     canvas.delete(t1)
     val = int(btt[4]) + val
     t1=canvas.create_text(350,130,text=val,font=18)
+    t2=canvas.create_text(500,500,text='Average waiting time : '+str(avgwt),font=18)
 
    
 
     
-    q1=Label(master=None,text="AVERAGE WAITING TIME = ",bg="tomato",fg="green",font=("helvetica",15,"bold"))
+    """q1=Label(master=tk,text="AVERAGE WAITING TIME = ",bg="tomato",fg="green",font=("helvetica",15,"bold"))
     q1.place(x=400,y=100)
-    q2=Label(master=None,text=avgwt,bg="tomato",fg="green",font=("helvetica",15,"bold"))
-    q2.place(x=550,y=100)
+    q2=Label(master=tk,text=avgwt,bg="tomato",fg="green",font=("helvetica",15,"bold"))
+    q2.place(x=550,y=100)"""
 
 
 def vis3():
@@ -864,7 +861,7 @@ def totale3():
     awt.place(x=975,y=300)
     tatb=Label(master=window,text="Average turn around time:",bg="tomato",fg="green",font=("helvetica",15,"bold"))
     tatb.place(x=975,y=400)
-    clear=Button(master=window,text="CLEAR",bg="white",command=clear3,fg="red",font=("helvetica",15,"bold"))
+    clear=Button(master=window,text="CLEAR",bg="white",command=clear2,fg="red",font=("helvetica",15,"bold"))
     clear.place(x=800,y=650)
 
 def totale2():
@@ -1376,9 +1373,6 @@ def fcfsa():
     border = 0,font=("helvetica",40,"bold"),command=pri)
     priority.place(x =670,y=500)
 
-    other = Button(root, text = 'other',relief = FLAT,
-    border = 0,font=("helvetica",40,"bold"))
-    other.place(x =1050,y=500) 
 
     root.mainloop()
     
