@@ -10,6 +10,7 @@ root = Tk()
 root.title('OS algorithm visualisation ')
 root.geometry('1450x800')
 root.configure(bg="tomato")
+root.resizable(0,0)
 global e1,e2,e3,e4,e5,y1,y2,y3,y4,y5,avgwt,avgtat
 def ball():
     tk=Tk()
@@ -128,6 +129,7 @@ def ball():
 def vis1():
     tk=Tk()
     tk.title("Graphics")
+    tk.resizable(0,0)
 
     Height=1000
     Width=1000
@@ -144,6 +146,7 @@ def vis2():
     sj=[]
     tk=Tk()
     tk.title("Graphics")
+    tk.resizable(0,0)
 
     Height=1000
     Width=1000
@@ -291,6 +294,7 @@ def ball3():
     tk=Tk()
     tk.title("Graphics")
     tk.configure(bg="blue")
+    tk.resizable(0,0)
     Height=1000
     Width=1000
     canvas=Canvas(tk,width=Width,height=Height)
@@ -367,11 +371,7 @@ def ball3():
             canvas.delete(text5)
             break
         tk.update()
-        time.sleep(0.1)
-    
-
-
-    
+        time.sleep(0.1) 
     val = int(btt[0]) + val
     t1=canvas.create_text(350,130,text=val,font=18)
     while True:
@@ -431,7 +431,7 @@ def ball3():
     canvas.delete(t1)
     val = int(btt[3]) + val
     t1=canvas.create_text(350,130,text=val,font=18)
-    canvas.delete(t1)
+    
 
 
     while True:
@@ -452,7 +452,7 @@ def ball3():
     canvas.delete(t1)
     val = int(btt[4]) + val
     t1=canvas.create_text(350,130,text=val,font=18)
-    t2=canvas.create_text(500,500,text='Average waiting time : '+str(avgwt),font=18)
+    t2=canvas.create_text(400,200,text='Average waiting time : '+str(avgwt),font=18)
 
    
 
@@ -467,7 +467,7 @@ def vis3():
     
     tk=Tk()
     tk.title("Graphics")
-    
+    tk.resizable(0,0)
     Height=1000
     Width=1000
     canvas=Canvas(tk,width=Width,height=Height)
@@ -500,6 +500,7 @@ def totale1():
     window.geometry("1450x800")
     window.title("SJF")
     window.configure(bg="tomato")
+    window.resizable(0,0)
     title=Label(master=window,text="SJF",bg="YELLOW",fg="green",font=("helvetica",70,"bold"))
     title.place(x=1000,y=90)
     global e1,e2,e3,e4,e5,y1,y2,y3,y4,y5,avgwt
