@@ -12,19 +12,21 @@ root.geometry('1450x800')
 root.configure(bg="tomato")
 root.resizable(0,0)
 global e1,e2,e3,e4,e5,y1,y2,y3,y4,y5,avgwt,avgtat
-def ball():
+
+def vis1():
     tk=Tk()
     tk.title("Graphics")
+    tk.resizable(0,0)
+
     Height=1000
     Width=1000
     canvas=Canvas(tk,width=Width,height=Height)
     canvas.pack()
-    xspeed=9
-    yspeed=0
-    x1=9
-    y11=0
     canvas.create_rectangle(200,100,300,150,outline="#fb0",fill="#fb0")
-    canvas.create_rectangle(700,100,900,400,outline="#fb0",fill="#fb0")
+    canvas.create_rectangle(700,200,900,350,outline="#fb0",fill="#fb0")
+    c1=Label(master=tk,text="CPU",fg="green",bg="tomato",font=("helvetica",15,"bold"))
+    c1.place(x=800,y=150)
+    
     ball1=canvas.create_oval(100,300,150,250,fil="red")
     ball2=canvas.create_oval(200,300,250,250,fil="red")
     ball3=canvas.create_oval(300,300,350,250,fil="red")
@@ -35,111 +37,115 @@ def ball():
     text3=canvas.create_text(325,275,text=y3,font=18)
     text2=canvas.create_text(225,275,text=y4,font=18)
     text1=canvas.create_text(125,275,text=y5,font=18)
-    while True:
-        canvas.move(ball5,xspeed,yspeed)
-        canvas.move(text5,x1,y11)
-        pos1=canvas.coords(text5)
-        pos=canvas.coords(ball5)
-        if pos[3]>=1000 or pos[1]<=0:
-            yspeed=-yspeed
-            y11=-y11
-        if pos[2]>=800 or pos[0]<=0:
-            canvas.delete(ball5)
-            canvas.delete(text5)
-            break
-        tk.update()
-        time.sleep(0.1)
-    global val
-    val=0
-    val = int(y1) + val 
-    t1=canvas.create_text(250,130,text=val,font=18) 
-    while True:
-        canvas.move(ball4,xspeed,yspeed)
-        pos=canvas.coords(ball4)
-        canvas.move(text4,x1,y11)
-        pos1=canvas.coords(text4)
-        if pos[3]>=1000 or pos[1]<=0:
-            yspeed=-yspeed
-            y11=-y11
-        if pos[2]>=800 or pos[0]<=0:
-            canvas.delete(ball4)
-            canvas.delete(text4)
-            break
-        tk.update()
-        time.sleep(0.1)
-    canvas.delete(t1)
-    val = int(y2) + val 
-    t1=canvas.create_text(250,130,text=val,font=18)
+    f1=Label(master=tk,text="In FCFS, the process which arrives first is assigned the cpu first and \n likewise all other processes are assigned the cpu",fg="green",font=("helvetica",15,"bold"))
+    f1.place(x=100,y=450)
+    
+
+    def ball():
+        xspeed=9
+        yspeed=0
+        x1=9
+        y11=0
         
-    while True:
-        canvas.move(ball3,xspeed,yspeed)
-        pos=canvas.coords(ball3)
-        canvas.move(text3,x1,y11)
-        pos1=canvas.coords(text3)
-        if pos[3]>=1000 or pos[1]<=0:
-            yspeed=-yspeed
-            y11=-y11
-        if pos[2]>=800 or pos[0]<=0:
-            canvas.delete(ball3)
-            canvas.delete(text3)
-            break
-        tk.update()
-        time.sleep(0.1)
-    canvas.delete(t1)
-    val = int(y3) + val 
-    t1=canvas.create_text(250,130,text=val,font=18)
+        while True:
+            canvas.move(ball5,xspeed,yspeed)
+            canvas.move(text5,x1,y11)
+            pos1=canvas.coords(text5)
+            pos=canvas.coords(ball5)
+            if pos[3]>=1000 or pos[1]<=0:
+                yspeed=-yspeed
+                y11=-y11
+            if pos[2]>=800 or pos[0]<=0:
+                canvas.delete(ball5)
+                canvas.delete(text5)
+                break
+            tk.update()
+            time.sleep(0.1)
+        global val
+        val=0
+        val = int(y1) + val 
+        t1=canvas.create_text(250,130,text=val,font=18) 
+        while True:
+            canvas.move(ball4,xspeed,yspeed)
+            pos=canvas.coords(ball4)
+            canvas.move(text4,x1,y11)
+            pos1=canvas.coords(text4)
+            if pos[3]>=1000 or pos[1]<=0:
+                yspeed=-yspeed
+                y11=-y11
+            if pos[2]>=800 or pos[0]<=0:
+                canvas.delete(ball4)
+                canvas.delete(text4)
+                break
+            tk.update()
+            time.sleep(0.1)
+        canvas.delete(t1)
+        val = int(y2) + val 
+        t1=canvas.create_text(250,130,text=val,font=18)
+        
+        while True:
+            canvas.move(ball3,xspeed,yspeed)
+            pos=canvas.coords(ball3)
+            canvas.move(text3,x1,y11)
+            pos1=canvas.coords(text3)
+            if pos[3]>=1000 or pos[1]<=0:
+                yspeed=-yspeed
+                y11=-y11
+            if pos[2]>=800 or pos[0]<=0:
+                canvas.delete(ball3)
+                canvas.delete(text3)
+                break
+            tk.update()
+            time.sleep(0.1)
+        canvas.delete(t1)
+        val = int(y3) + val 
+        t1=canvas.create_text(250,130,text=val,font=18)
 
         
-    while True:
-        canvas.move(ball2,xspeed,yspeed)
-        pos=canvas.coords(ball2)
-        canvas.move(text2,x1,y11)
-        pos1=canvas.coords(text2)
-        if pos[3]>=1000 or pos[1]<=0:
-            yspeed=-yspeed
-            y11=-y11
-        if pos[2]>=800 or pos[0]<=0:
-            canvas.delete(ball2)
-            canvas.delete(text2)
-            break
-        tk.update()
-        time.sleep(0.1)
-    canvas.delete(t1)
-    val = int(y4) + val 
-    t1=canvas.create_text(250,130,text=val,font=18)
+        while True:
+            canvas.move(ball2,xspeed,yspeed)
+            pos=canvas.coords(ball2)
+            canvas.move(text2,x1,y11)
+            pos1=canvas.coords(text2)
+            if pos[3]>=1000 or pos[1]<=0:
+                yspeed=-yspeed
+                y11=-y11
+            if pos[2]>=800 or pos[0]<=0:
+                canvas.delete(ball2)
+                canvas.delete(text2)
+                break
+            tk.update()
+            time.sleep(0.1)
+        canvas.delete(t1)
+        val = int(y4) + val 
+        t1=canvas.create_text(250,130,text=val,font=18)
 
-    while True:
-        canvas.move(ball1,xspeed,yspeed)
-        pos=canvas.coords(ball1)
-        canvas.move(text1,x1,y11)
-        pos1=canvas.coords(text1)
-        if pos[3]>=1000 or pos[1]<=0:
-            yspeed=-yspeed
-            y11=-y11
-        if pos[2]>=800 or pos[0]<=0:
-            canvas.delete(ball1)
-            canvas.delete(text1)
-            break
-        tk.update()
-        time.sleep(0.1)
-    canvas.delete(t1)
-    val = int(y5) + val 
-    t1=canvas.create_text(250,130,text=val,font=18)
-    t2=canvas.create_text(300,200,text='Average waiting time :'+str(avgwt),font=18)
-def vis1():
-    tk=Tk()
-    tk.title("Graphics")
-    tk.resizable(0,0)
-
-    Height=1000
-    Width=1000
-    canvas=Canvas(tk,width=Width,height=Height)
-    canvas.pack()
+        while True:
+            canvas.move(ball1,xspeed,yspeed)
+            pos=canvas.coords(ball1)
+            canvas.move(text1,x1,y11)
+            pos1=canvas.coords(text1)
+            if pos[3]>=1000 or pos[1]<=0:
+                yspeed=-yspeed
+                y11=-y11
+            if pos[2]>=800 or pos[0]<=0:
+                canvas.delete(ball1)
+                canvas.delete(text1)
+                break
+            tk.update()
+            time.sleep(0.1)
+        canvas.delete(t1)
+        val = int(y5) + val 
+        t1=canvas.create_text(250,130,text=val,font=18)
+        t2=canvas.create_text(300,200,text='Average waiting time :'+str(avgwt),font=18)
+        
+    
+    
 
 
 
     bt1=Button(tk, text="START", width=10, command=ball)
-    bt1.place(x=500,y=500)
+    bt1.place(x=500,y=600)
     
 def vis2():
     global avgwt
@@ -183,6 +189,8 @@ def vis2():
         y11=0
         canvas.create_rectangle(700,500,900,650,outline="#fb0",fill="#fb0")
         canvas.create_rectangle(200,100,300,150,outline="#fb0",fill="#fb0")
+        c2=Label(master=tk,text="CPU",fg="green",bg="tomato",font=("helvetica",15,"bold"))
+        c2.place(x=750,y=450)
         ball1=canvas.create_oval(100,550,150,600,fil="red")
         ball2=canvas.create_oval(200,550,250,600,fil="red")
         ball3=canvas.create_oval(300,550,350,600,fil="red")
@@ -326,7 +334,9 @@ def ball3():
     x1=9
     y11=0
     canvas.create_rectangle(200,100,500,150,outline="#fb0",fill="#fb0")
-    canvas.create_rectangle(700,100,900,400,outline="#fb0",fill="#fb0")
+    canvas.create_rectangle(700,200,900,400,outline="#fb0",fill="#fb0")
+    c3=Label(master=tk,text="CPU",fg="green",bg="tomato",font=("helvetica",15,"bold"))
+    c3.place(x=750,y=150)
     #RED ball3S FOR BRUST TIME
     ball31=canvas.create_oval(100,300,150,250,fil="red")
     ball32=canvas.create_oval(200,300,250,250,fil="red")
@@ -352,7 +362,7 @@ def ball3():
     text7=canvas.create_text(225,375,text=pri[3],font=18)
     text6=canvas.create_text(125,375,text=pri[4],font=18)
     
-    q3=Label(master=tk,text="IN THIS ALGORITHM THE PROCESS DISPATCHED WILL BE THE ONE" '\n' "THAT HAS HIGGEST PRIORITY AMONGST THE PROCESS WAITING IN THE QUEUE",bg="tomato",fg="green",font=("helvetica",15,"bold"))
+    q3=Label(master=tk,text="In Priority algorithm each process is assigned a priority \n and the process with the highest priority is taken first",fg="green",font=("helvetica",15,"bold"))
     q3.place(x=100,y=600)
     
 
@@ -635,7 +645,7 @@ def totale1():
 
     m1=Label(master=window,text="PROCESSES",bg="tomato",fg="green",font=("helvetica",15,"bold"))
     m1.place(x=170,y=80)
-    m2=Label(master=window,text="NEW TIME",bg="tomato",fg="green",font=("helvetica",15,"bold"))
+    m2=Label(master=window,text="ARRANGED TIME",bg="tomato",fg="green",font=("helvetica",15,"bold"))
     m2.place(x=320,y=80)
     m3=Label(master=window,text="WAITING TIME",bg="tomato",fg="green",font=("helvetica",15,"bold"))
     m3.place(x=500,y=80)
@@ -718,15 +728,30 @@ def totale3():
 
     
     priority=[]
-    
+    vd=[]
+    vd1=[]
     priority.append(y1)
     priority.append(y2)
     priority.append(y3)
     priority.append(y4)
     priority.append(y5)
+    vd1.append(y1)
+    vd1.append(y2)
+    vd1.append(y3)
+    vd1.append(y4)
+    vd1.append(y5)
+    print("now")
     print(priority)
+    vd=priority
+    print(vd)
     
     bt=[]
+    vd2=[]
+    vd2.append(v1)
+    vd2.append(v2)
+    vd2.append(v3)
+    vd2.append(v4)
+    vd2.append(v5)
     
     bt.append(v1)
     bt.append(v2)
@@ -771,8 +796,7 @@ def totale3():
         avgtat = avgtat + tat[i]
     avgtat = avgtat/n    
     #TILL HERE
-    print(avgwt)
-    print(avgtat)
+    
  
     t1=Label(master=window,text=wt[0],bg="tomato",fg="green",font=("helvetica",25,"bold"))
     t1.place(x=575,y=155)
@@ -838,32 +862,85 @@ def totale3():
 
 
 
-    l1=Label(master=window,text="PROCESS 1 :",bg="tomato",fg="green",font=("helvetica",15,"bold"))
-    l1.place(x=20,y=155)
-    l2=Label(master=window,text="PROCESS 2 :",bg="tomato",fg="green",font=("helvetica",15,"bold"))
-    l2.place(x=20,y=255)
-    l3=Label(master=window,text="PROCESS 3 :",bg="tomato",fg="green",font=("helvetica",15,"bold"))
-    l3.place(x=20,y=355)
-    l4=Label(master=window,text="PROCESS 4 :",bg="tomato",fg="green",font=("helvetica",15,"bold"))
-    l4.place(x=20,y=455)
-    l5=Label(master=window,text="PROCESS 5 :",bg="tomato",fg="green",font=("helvetica",15,"bold"))
-    l5.place(x=20,y=555)
-    e1.insert(END,y1)
-    e2.insert(END,y2)
-    e3.insert(END,y3)
-    e4.insert(END,y4)
-    e5.insert(END,y5)
-    s1.insert(END,v1)
-    s2.insert(END,v2)
-    s3.insert(END,v3)
-    s4.insert(END,v4)
-    s5.insert(END,v5)
+
     awt=Label(master=window,text="Average waiting time:",bg="tomato",fg="green",font=("helvetica",15,"bold"))
     awt.place(x=975,y=300)
     tatb=Label(master=window,text="Average turn around time:",bg="tomato",fg="green",font=("helvetica",15,"bold"))
     tatb.place(x=975,y=400)
     clear=Button(master=window,text="CLEAR",bg="white",command=clear2,fg="red",font=("helvetica",15,"bold"))
     clear.place(x=800,y=650)
+    print("Then")
+    vd.sort()
+    print(priority)
+    print(priority[0])
+    e1.insert(END,vd[0])
+    e2.insert(END,vd[1])
+    e3.insert(END,vd[2])
+    e4.insert(END,vd[3])
+    e5.insert(END,vd[4])
+    print(vd1)
+    """i1=vd1.index(vd[0])
+    cap=i1
+    i2=vd1.index(vd[1])
+    if(i2==cap):
+        i2=vd1.index(vd[2])
+    cap=i2
+    i3=vd1.index(vd[2])
+    if(i3==cap):
+        i3=vd1.index(vd[3])
+    cap=i3
+    i4=vd1.index(vd[3])
+    if(i4==cap):
+        i4=vd1.index(vd[4])
+    cap=i4
+    i5=vd1.index(vd[4])
+    if(i5==cap):
+        i5+=1"""
+    pri=[]
+    pri.append(y1)
+    pri.append(y2)
+    pri.append(y3)
+    pri.append(y4)
+    pri.append(y5)
+    pri.sort()
+    print(pri)
+    i1=(pri.index(y1))
+    i2=(pri.index(y2))
+    i3=(pri.index(y3))
+    i4=(pri.index(y4))
+    i5=(pri.index(y5))
+    btt=[]
+    btt.insert(i1,v1)
+    btt.insert(i2,v2)
+    btt.insert(i3,v3)
+    btt.insert(i4,v4)
+    btt.insert(i5,v5)
+    print(btt)
+    
+    
+
+    s1.insert(END,btt[0])
+    s2.insert(END,btt[1])
+    s3.insert(END,btt[2])
+    s4.insert(END,btt[3])
+    s5.insert(END,btt[4])
+    b1=()
+   
+    process1="PROCESS 1"
+    process2="PROCESS 2"
+    process3="PROCESS 3"
+    process4="PROCESS 4"
+    process5="PROCESS 5"
+    l1=Label(master=window,text=process1,bg="tomato",fg="green",font=("helvetica",15,"bold"))
+    l1.place(x=20,y=155)
+    l2=Label(master=window,text=process2,bg="tomato",fg="green",font=("helvetica",15,"bold"))
+    l2.place(x=20,y=255)
+    l3=Label(master=window,text=process3,bg="tomato",fg="green",font=("helvetica",15,"bold"))
+    l3.place(x=20,y=355)
+    l4=Label(master=window,text=process4,bg="tomato",fg="green",font=("helvetica",15,"bold"))
+    l4.place(x=20,y=455)
+    l5=Label(master=window,text=process5,bg="tomato",fg="green",font=("helvetica",15,"bold"))
+    l5.place(x=20,y=555)
 
 def totale2():
     n=5
@@ -924,7 +1001,6 @@ def totale2():
     bt.append(v3)
     bt.append(v3)
     bt.append(v3)
-    print(bt)
     processes=[]
     for i in range(0,n):
         processes.insert(i,i+1)
@@ -952,8 +1028,6 @@ def totale2():
         avgtat=avgtat+tat[i]
     avgwt=float(avgwt)/n
     avgtat=float(avgtat)/n
-    print(avgwt)
-    print(avgtat)
     t1=Label(master=window,text=wt[0],bg="tomato",fg="green",font=("helvetica",25,"bold"))
     t1.place(x=575,y=155)
     t2=Label(master=window,text=wt[1],bg="tomato",fg="green",font=("helvetica",25,"bold"))
@@ -1179,7 +1253,7 @@ def sjfa():
 
     m1=Label(master=window,text="PROCESSES",bg="tomato",fg="green",font=("helvetica",15,"bold"))
     m1.place(x=170,y=80)
-    m2=Label(master=window,text="NEW TIME",bg="tomato",fg="green",font=("helvetica",15,"bold"))
+    m2=Label(master=window,text="ARRANGED TIME",bg="tomato",fg="green",font=("helvetica",15,"bold"))
     m2.place(x=320,y=80)
     m3=Label(master=window,text="WAITING TIME",bg="tomato",fg="green",font=("helvetica",15,"bold"))
     m3.place(x=500,y=80)
